@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.umsResource.mapper.UmsResourceMapper">
+    <select id="queryResourceByAdmin" parameterType="java.lang.Long" resultType="com.fh.umsResource.entity.UmsResource">
+        select DISTINCT r.keyword from
+        ums_admin_role_relation ar
+        LEFT JOIN ums_role_resource_relation rm on ar.role_id=rm.role_id
+        LEFT JOIN ums_resource r on rm.resource_id=r.id
+        and r.keyword is not null
+        WHERE ar.admin_id = #{id}
+    </select>
+</mapper>

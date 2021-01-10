@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.umsMenu.mapper.UmsMenuMapper">
+    <select id="queryErectMenuTree"  parameterType="java.lang.Long" resultType="com.fh.umsMenu.entity.UmsMenu">
+        select m.* from
+        ums_admin_role_relation ar
+        LEFT JOIN ums_role_menu_relation rm on ar.role_id=rm.role_id
+        LEFT JOIN ums_menu m on rm.menu_id=m.id
+        where ar.admin_id = #{id}
+        order by m.sort
+    </select>
+</mapper>

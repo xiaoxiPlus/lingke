@@ -1,0 +1,43 @@
+server:
+  port: 9080
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.230.1:3306/fox-shop?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    hikari:
+      connection-timeout: 100000
+  redis:
+    host: 192.168.230.138
+    port: 6379
+    timeout: 10000
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  data:
+    mongodb:
+      uri: mongodb://adminLogs:123456@192.168.230.138:27017/admin_logs?authSource=admin_logs
+mybatis-plus:
+  configuration:
+#  在控制台打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#   关闭驼峰命名法
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:mapper/*.xml
+user:
+  dir: D:\IntelliJ IDEA 2018.1.2\workspace\fox-shop-parent
+  jwtset:
+    signatrue: "liqiang"
+    exptime: 180000000
+    alg: "HS256"
+    type: "JWT"
+
